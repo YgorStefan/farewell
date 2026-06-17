@@ -1,0 +1,137 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API Dashboard de Velorios - Memorial Luto Curitiba",
+    "version": "1.0.0",
+    "description": "API REST que consolida e expoe os velorios em andamento e gera banners em PDF."
+  },
+  "servers": [{ "url": "/api" }],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Healthcheck",
+        "responses": {
+          "200": {
+            "description": "Servico saudavel",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HealthResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/velorios": {
+      "get": {
+        "summary": "Lista velorios em andamento",
+        "parameters": [
+          {
+            "name": "registro",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "maxLength": 50 },
+            "description": "Filtra pelo numero de Registro de Obito."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de velorios ativos",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/VelorioListResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/velorios/{id}/banner.pdf": {
+      "get": {
+        "summary": "Gera o banner em PDF de um velorio",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "minimum": 1 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PDF do banner",
+            "content": { "application/pdf": { "schema": { "type": "string", "format": "binary" } } }
+          },
+          "400": {
+            "description": "Id invalido",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } }
+            }
+          },
+          "404": {
+            "description": "Velorio nao encontrado",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HealthResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["status", "database"],
+        "properties": {
+          "status": { "type": "string" },
+          "database": { "type": "string" }
+        }
+      },
+      "Velorio": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "nomeCompleto",
+          "numeroRegistro",
+          "funeraria",
+          "sala",
+          "localVelorio",
+          "inicioVelorio",
+          "inicioSepultamento",
+          "localSepultamento"
+        ],
+        "properties": {
+          "id": { "type": "integer" },
+          "nomeCompleto": { "type": "string" },
+          "numeroRegistro": { "type": "string" },
+          "funeraria": { "type": "string" },
+          "sala": { "type": ["string", "null"] },
+          "localVelorio": { "type": "string" },
+          "inicioVelorio": { "type": "string", "format": "date-time" },
+          "inicioSepultamento": { "type": ["string", "null"], "format": "date-time" },
+          "localSepultamento": { "type": "string" }
+        }
+      },
+      "VelorioListResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["data", "total"],
+        "properties": {
+          "data": { "type": "array", "items": { "$ref": "#/components/schemas/Velorio" } },
+          "total": { "type": "integer", "minimum": 0 }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["error"],
+        "properties": {
+          "error": { "type": "string" }
+        }
+      }
+    }
+  }
+}

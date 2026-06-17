@@ -1,0 +1,50 @@
+{
+  "name": "backend-luto-curitiba",
+  "version": "1.0.0",
+  "description": "API REST do Dashboard de Velorios - Memorial Luto Curitiba",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:contract": "vitest run tests/contract",
+    "test:coverage": "vitest run --coverage",
+    "test:perf": "node tests/performance/load.js",
+    "test:dast": "node tests/security/zap-baseline.js",
+    "audit": "npm audit --omit=dev"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "pdfkit": "^0.15.0",
+    "pg": "^8.12.0",
+    "pino": "^9.3.2",
+    "pino-http": "^10.2.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@testcontainers/postgresql": "^12.0.3",
+    "@vitest/coverage-v8": "^4.1.9",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "autocannon": "^8.0.0",
+    "eslint": "^10.5.0",
+    "eslint-plugin-security": "^4.0.1",
+    "globals": "^17.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.2.2",
+    "vitest": "^4.1.9"
+  }
+}
