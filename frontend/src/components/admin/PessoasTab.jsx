@@ -68,7 +68,10 @@ export function PessoasTab() {
     }
   }, [debouncedSearch]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    load();
+  }, [load]);
 
   const showToast = (msg, type = 'success') => {
     setToast({ msg, type });

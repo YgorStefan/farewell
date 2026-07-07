@@ -44,7 +44,9 @@ export function createApp({ velorioController, adminController, authMiddleware, 
 
   app.use('/api/health', createHealthRouter(database));
   app.use('/api/velorios', createVelorioRouter(velorioController));
-  app.use('/api/admin', createAdminRouter(adminController, authMiddleware));
+  if (adminController && authMiddleware) {
+    app.use('/api/admin', createAdminRouter(adminController, authMiddleware));
+  }
 
   app.use(notFound);
   app.use(errorHandler);

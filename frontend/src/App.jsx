@@ -146,6 +146,7 @@ export default function App() {
   const [auth, setAuth] = useState(isAuthenticated());
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setAuth(isAuthenticated());
   }, [hash]);
 

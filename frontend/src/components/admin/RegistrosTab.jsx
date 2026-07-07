@@ -81,7 +81,10 @@ export function RegistrosTab() {
     }
   }, [debouncedSearch]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    load();
+  }, [load]);
 
   const loadLookups = async () => {
     try {
