@@ -6,8 +6,8 @@ considerei e descartei. Tentei deixar explícito o raciocínio por trás de cada
 
 ## URLs de produção
 
-- **Frontend (Vercel):** https://desafio-analista-pleno-dun.vercel.app
-- **API Backend (Render):** https://luto-curitiba-api.onrender.com
+- **Frontend (Vercel):** https://farewell.vercel.app
+- **API Backend (Render):** https://farewell-api.onrender.com
 
 > A primeira requisição à API pode levar 50s por causa do cold start do free tier
 > do Render (o serviço hiberna após inatividade). Da segunda requisição em diante fica
@@ -176,9 +176,9 @@ ou sem filtro.
 O desafio fala em velórios "em andamento", mas não define isso em SQL, então essa virou uma
 das decisões de modelagem mais importantes do projeto.
 
-Considero um velório **em andamento no Memorial Luto Curitiba** quando:
+Considero um velório **em andamento no Memorial Farewell** quando:
 
-1. `local_velorio = 'Memorial Luto Curitiba'` - é o painel desta unidade;
+1. `local_velorio = 'Memorial Farewell'` - é o painel desta unidade;
 2. `inicio_velorio <= NOW()` - já começou; e
 3. `fim_sepultamento IS NULL` - o ciclo (velório → sepultamento) ainda não foi finalizado.
 
