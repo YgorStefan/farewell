@@ -6,7 +6,7 @@ considerei e descartei. Tentei deixar explícito o raciocínio por trás de cada
 
 ## URLs de produção
 
-- **Frontend (Vercel):** https://farewell.vercel.app
+- **Frontend (Vercel):** https://farewell-ygor.vercel.app
 - **API Backend (Render):** https://farewell-api.onrender.com
 
 > A primeira requisição à API pode levar 50s por causa do cold start do free tier
