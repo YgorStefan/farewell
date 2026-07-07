@@ -6,8 +6,8 @@ considerei e descartei. Tentei deixar explícito o raciocínio por trás de cada
 
 ## URLs de produção
 
-- **Frontend (Vercel):** _[substituir pelo link após o deploy]_
-- **API Backend (Render):** _[substituir pelo link após o deploy]_
+- **Frontend (Vercel):** https://desafio-analista-pleno-dun.vercel.app
+- **API Backend (Render):** https://luto-curitiba-api.onrender.com
 
 > A primeira requisição à API pode levar 50s por causa do cold start do free tier
 > do Render (o serviço hiberna após inatividade). Da segunda requisição em diante fica

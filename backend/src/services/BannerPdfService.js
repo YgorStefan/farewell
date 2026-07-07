@@ -28,7 +28,7 @@ export class BannerPdfService {
       margin: 50,
       info: {
         Title: `Banner - ${velorio.nomeCompleto}`,
-        Author: 'Memorial Luto Curitiba',
+        Author: 'Memorial Farewell',
       },
     });
 
@@ -62,7 +62,7 @@ export class BannerPdfService {
       .fillColor(BRAND_BLUE)
       .font('Helvetica-Bold')
       .fontSize(15)
-      .text('MEMORIAL LUTO CURITIBA', left, doc.y, {
+      .text('MEMORIAL FAREWELL', left, doc.y, {
         align: 'center',
         width,
         characterSpacing: 2,

@@ -92,7 +92,7 @@ export function EmptyState({ filtered }) {
       <p className="state__text">
         {filtered
           ? 'Verifique o número do Registro de Óbito e tente novamente.'
-          : 'Não há velórios ativos no Memorial Luto Curitiba neste momento.'}
+          : 'Não há velórios ativos no Memorial Farewell neste momento.'}
       </p>
     </div>
   );

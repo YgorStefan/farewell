@@ -38,7 +38,34 @@ beforeAll(async () => {
     service,
     pdfService: new BannerPdfService(),
   });
-  app = createApp({ velorioController: controller, database });
+  const dummyAdminController = {
+    login: (req, res) => res.json({}),
+    lookupPessoas: (req, res) => res.json({}),
+    lookupRegistros: (req, res) => res.json({}),
+    listarPessoas: (req, res) => res.json({}),
+    buscarPessoa: (req, res) => res.json({}),
+    criarPessoa: (req, res) => res.json({}),
+    atualizarPessoa: (req, res) => res.json({}),
+    excluirPessoa: (req, res) => res.json({}),
+    listarRegistros: (req, res) => res.json({}),
+    buscarRegistro: (req, res) => res.json({}),
+    criarRegistro: (req, res) => res.json({}),
+    atualizarRegistro: (req, res) => res.json({}),
+    excluirRegistro: (req, res) => res.json({}),
+    listarVelorios: (req, res) => res.json({}),
+    buscarVelorio: (req, res) => res.json({}),
+    criarVelorio: (req, res) => res.json({}),
+    atualizarVelorio: (req, res) => res.json({}),
+    excluirVelorio: (req, res) => res.json({}),
+  };
+  const dummyAuthMiddleware = (req, res, next) => next();
+
+  app = createApp({ 
+    velorioController: controller, 
+    adminController: dummyAdminController, 
+    authMiddleware: dummyAuthMiddleware, 
+    database 
+  });
 }, 120_000);
 
 afterAll(async () => {
@@ -55,7 +82,7 @@ describe('GET /api/health', () => {
 });
 
 describe('GET /api/velorios', () => {
-  it('lista apenas velorios ativos do Memorial Luto Curitiba', async () => {
+  it('lista apenas velorios ativos do Memorial Farewell', async () => {
     const res = await request(app).get('/api/velorios');
     expect(res.status).toBe(200);
 
@@ -64,7 +91,7 @@ describe('GET /api/velorios', () => {
     expect(res.body.data).toHaveLength(res.body.total);
 
     for (const item of res.body.data) {
-      expect(item.localVelorio).toBe('Memorial Luto Curitiba');
+      expect(item.localVelorio).toBe('Memorial Farewell');
     }
 
     const registros = res.body.data.map((v) => v.numeroRegistro);

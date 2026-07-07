@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "API Dashboard de Velorios - Memorial Luto Curitiba",
+    "title": "API Dashboard de Velorios - Memorial Farewell",
     "version": "1.0.0",
     "description": "API REST que consolida e expoe os velorios em andamento e gera banners em PDF."
   },

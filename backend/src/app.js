@@ -8,14 +8,17 @@ import { env } from './config/env.js';
 import { logger } from './config/logger.js';
 import { createVelorioRouter } from './routes/velorios.routes.js';
 import { createHealthRouter } from './routes/health.routes.js';
+import { createAdminRouter } from './routes/admin.routes.js';
 import { notFound, errorHandler } from './middlewares/errorHandler.js';
 
 /**
  * @param {object} deps
  * @param {import('./controllers/VelorioController.js').VelorioController} deps.velorioController
+ * @param {import('./controllers/AdminController.js').AdminController} deps.adminController
+ * @param {import('express').RequestHandler} deps.authMiddleware
  * @param {import('./db/Database.js').Database} deps.database
  */
-export function createApp({ velorioController, database }) {
+export function createApp({ velorioController, adminController, authMiddleware, database }) {
   const app = express();
 
   app.set('trust proxy', 1);
@@ -24,7 +27,7 @@ export function createApp({ velorioController, database }) {
   app.use(
     cors({
       origin: env.allowedOrigins,
-      methods: ['GET'],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     })
   );
   app.use(express.json({ limit: '10kb' }));
@@ -41,6 +44,7 @@ export function createApp({ velorioController, database }) {
 
   app.use('/api/health', createHealthRouter(database));
   app.use('/api/velorios', createVelorioRouter(velorioController));
+  app.use('/api/admin', createAdminRouter(adminController, authMiddleware));
 
   app.use(notFound);
   app.use(errorHandler);

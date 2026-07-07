@@ -17,6 +17,7 @@ const envSchema = z
     FRONTEND_ORIGIN: z.string().default('http://localhost:5173'),
     RATE_LIMIT_WINDOW_MS: z.coerce.number().int().positive().default(15 * 60 * 1000),
     RATE_LIMIT_MAX: z.coerce.number().int().positive().default(120),
+    ADMIN_PASSWORD: z.string().default('134679Ygor'),
   })
   .refine((data) => Boolean(data.DATABASE_URL || data.PGHOST), {
     message: 'Defina DATABASE_URL ou as variaveis PG* (PGHOST, PGUSER, PGPASSWORD, PGDATABASE)',
@@ -47,4 +48,5 @@ export const env = Object.freeze({
     windowMs: data.RATE_LIMIT_WINDOW_MS,
     max: data.RATE_LIMIT_MAX,
   },
+  adminPassword: data.ADMIN_PASSWORD,
 });

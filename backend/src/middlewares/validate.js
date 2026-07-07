@@ -14,6 +14,9 @@ export function validate(schemas) {
       if (schemas.query) {
         req.validated.query = schemas.query.parse(req.query);
       }
+      if (schemas.body) {
+        req.validated.body = schemas.body.parse(req.body);
+      }
       next();
     } catch (error) {
       if (error instanceof z.ZodError) {

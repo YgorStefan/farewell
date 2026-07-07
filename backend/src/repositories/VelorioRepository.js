@@ -1,7 +1,7 @@
 export class VelorioRepository {
   #db;
 
-  static #LOCAL_MEMORIAL = 'Memorial Luto Curitiba';
+  static #LOCAL_MEMORIAL = 'Memorial Farewell';
 
   static #BASE_SELECT = `
     SELECT

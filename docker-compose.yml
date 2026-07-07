@@ -5,13 +5,13 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-admin}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-adminpassword}
-      POSTGRES_DB: ${POSTGRES_DB:-luto_curitiba}
+      POSTGRES_DB: ${POSTGRES_DB:-farewell}
     ports:
       - "5432:5432"
     volumes:
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d ${POSTGRES_DB:-luto_curitiba}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d ${POSTGRES_DB:-farewell}"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -31,9 +31,10 @@ services:
       PGPORT: 5432
       PGUSER: ${POSTGRES_USER:-admin}
       PGPASSWORD: ${POSTGRES_PASSWORD:-adminpassword}
-      PGDATABASE: ${POSTGRES_DB:-luto_curitiba}
+      PGDATABASE: ${POSTGRES_DB:-farewell}
       DB_SSL: "false"
       FRONTEND_ORIGIN: http://localhost:5173
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-134679Ygor}
     volumes:
       - ./backend:/app
       - /app/node_modules

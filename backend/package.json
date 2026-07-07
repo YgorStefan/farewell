@@ -1,7 +1,7 @@
 {
   "name": "backend-luto-curitiba",
   "version": "1.0.0",
-  "description": "API REST do Dashboard de Velorios - Memorial Luto Curitiba",
+  "description": "API REST do Dashboard de Velorios - Memorial Farewell",
   "type": "module",
   "main": "src/server.js",
   "scripts": {

@@ -45,7 +45,7 @@ function VigilCandle() {
 export function Header({ total, emVelorio = 0, emSepultamento = 0, lastUpdated, refreshing, children }) {
   return (
     <header className={`header ${refreshing ? 'header--refreshing' : ''}`}>
-      <img className="header__logo" src="/Logo.webp" alt="Memorial Luto Curitiba" />
+      <img className="header__logo" src="/logo.png?v=2" alt="Memorial Farewell" />
 
       <div className="header__brand">
         <h1 className="header__title">Painel de Velórios e Sepultamentos</h1>

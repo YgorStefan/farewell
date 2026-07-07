@@ -80,60 +80,60 @@ INSERT INTO registros_obitos (pessoa_id, numero_registro, faf, local_obito, data
 (19, 'REG-2026-0019', 'FAF-019', 'UPA Boa Vista', '2026-05-23 21:45:00', 'Funerária Bom Pastor'),
 (20, 'REG-2026-0020', 'FAF-020', 'Hospital Cajuru', '2026-05-22 17:30:00', 'Funerária Nossa Senhora');
 
--- Velórios (20 registros - 13 no Memorial Luto Curitiba, 7 em outros locais)
+-- Velórios (20 registros - 13 no Memorial Farewell, 7 em outros locais)
 
 INSERT INTO velorios (registro_obito_id, local_velorio, local_sepultamento, sala_velorio, inicio_velorio, fim_velorio, inicio_sepultamento, fim_sepultamento) VALUES
 
 
-(1, 'Memorial Luto Curitiba', 'Cemitério Municipal', 'Sala Lírio', 
+(1, 'Memorial Farewell', 'Cemitério Municipal', 'Sala Lírio', 
     CURRENT_DATE - 1 + TIME '08:00',        -- ontem 08:00
     CURRENT_DATE + 1 + TIME '09:00',        -- amanhã 09:00
     CURRENT_DATE + 1 + TIME '10:00',        -- amanhã 10:00
     NULL),
 
-(2, 'Memorial Luto Curitiba', 'Cemitério Parque Iguaçu', 'Sala Azaleia', 
+(2, 'Memorial Farewell', 'Cemitério Parque Iguaçu', 'Sala Azaleia', 
     CURRENT_DATE - 1 + TIME '14:00',        -- ontem 14:00
     CURRENT_DATE + 2 + TIME '14:00',        -- depois de amanhã 14:00
     CURRENT_DATE + 2 + TIME '15:00', 
     NULL),
 
-(3, 'Memorial Luto Curitiba', 'Cemitério Municipal', 'Sala Orquídea', 
+(3, 'Memorial Farewell', 'Cemitério Municipal', 'Sala Orquídea', 
     CURRENT_DATE + TIME '07:00',            -- hoje 07:00
     CURRENT_DATE + 1 + TIME '15:00',        -- amanhã 15:00
     CURRENT_DATE + 1 + TIME '16:00', 
     NULL),
 
-(4, 'Memorial Luto Curitiba', 'Cemitério São Francisco', 'Sala Lírio', 
+(4, 'Memorial Farewell', 'Cemitério São Francisco', 'Sala Lírio', 
     CURRENT_DATE - 2 + TIME '20:00',        -- anteontem 20:00
     CURRENT_DATE + 3 + TIME '10:00',        -- daqui a 3 dias 10:00
     CURRENT_DATE + 3 + TIME '11:00', 
     NULL),
 
-(5, 'Memorial Luto Curitiba', 'Crematório Vaticano', 'Sala Vitória-Régia', 
+(5, 'Memorial Farewell', 'Crematório Vaticano', 'Sala Vitória-Régia', 
     CURRENT_DATE - 1 + TIME '10:00',        -- ontem 10:00
     CURRENT_DATE + 2 + TIME '08:00',        -- depois de amanhã 08:00
     CURRENT_DATE + 2 + TIME '09:00', 
     NULL),
 
-(7, 'Memorial Luto Curitiba', 'Cemitério Municipal', 'Sala Margarida', 
+(7, 'Memorial Farewell', 'Cemitério Municipal', 'Sala Margarida', 
     CURRENT_DATE + TIME '06:00',            -- hoje 06:00
     CURRENT_DATE + 1 + TIME '09:00',        -- amanhã 09:00
     CURRENT_DATE + 1 + TIME '10:00', 
     NULL),
 
-(13, 'Memorial Luto Curitiba', 'Cemitério Municipal', 'Sala Vitória-Régia', 
+(13, 'Memorial Farewell', 'Cemitério Municipal', 'Sala Vitória-Régia', 
     CURRENT_DATE + TIME '09:00',            -- hoje 09:00
     CURRENT_DATE + 1 + TIME '13:00',        -- amanhã 13:00
     CURRENT_DATE + 1 + TIME '14:00', 
     NULL),
 
-(15, 'Memorial Luto Curitiba', 'Cemitério São Francisco', 'Sala Lírio', 
+(15, 'Memorial Farewell', 'Cemitério São Francisco', 'Sala Lírio', 
     CURRENT_DATE + TIME '10:00',            -- hoje 10:00
     CURRENT_DATE + 1 + TIME '07:00',        -- amanhã 07:00
     CURRENT_DATE + 1 + TIME '08:00', 
     NULL),
 
-(19, 'Memorial Luto Curitiba', 'Cemitério Parque Iguaçu', 'Sala Vitória-Régia', 
+(19, 'Memorial Farewell', 'Cemitério Parque Iguaçu', 'Sala Vitória-Régia', 
     CURRENT_DATE + TIME '08:00',            -- hoje 08:00
     CURRENT_DATE + 1 + TIME '10:00',        -- amanhã 10:00
     CURRENT_DATE + 1 + TIME '11:00', 
@@ -151,7 +151,7 @@ INSERT INTO velorios (registro_obito_id, local_velorio, local_sepultamento, sala
     CURRENT_DATE + 1 + TIME '16:00', 
     NULL),
 
-(8, 'Memorial Luto Curitiba', 'Cemitério Parque Iguaçu', 'Sala Lírio', 
+(8, 'Memorial Farewell', 'Cemitério Parque Iguaçu', 'Sala Lírio', 
     CURRENT_DATE - 5 + TIME '08:00', 
     CURRENT_DATE - 4 + TIME '08:30', 
     CURRENT_DATE - 4 + TIME '09:00', 
@@ -163,13 +163,13 @@ INSERT INTO velorios (registro_obito_id, local_velorio, local_sepultamento, sala
     CURRENT_DATE - 4 + TIME '10:00', 
     CURRENT_DATE - 4 + TIME '10:30'),
 
-(10, 'Memorial Luto Curitiba', 'Cemitério São Francisco', 'Sala Orquídea', 
+(10, 'Memorial Farewell', 'Cemitério São Francisco', 'Sala Orquídea', 
     CURRENT_DATE - 6 + TIME '14:00', 
     CURRENT_DATE - 5 + TIME '14:30', 
     CURRENT_DATE - 5 + TIME '15:00', 
     CURRENT_DATE - 5 + TIME '15:30'),
 
-(12, 'Memorial Luto Curitiba', 'Crematório Vaticano', 'Sala Azaleia', 
+(12, 'Memorial Farewell', 'Crematório Vaticano', 'Sala Azaleia', 
     CURRENT_DATE - 7 + TIME '07:00', 
     CURRENT_DATE - 6 + TIME '10:30', 
     CURRENT_DATE - 5 + TIME '11:00', 
@@ -181,7 +181,7 @@ INSERT INTO velorios (registro_obito_id, local_velorio, local_sepultamento, sala
     CURRENT_DATE - 6 + TIME '10:00', 
     CURRENT_DATE - 6 + TIME '10:30'),
 
-(17, 'Memorial Luto Curitiba', 'Crematório Vaticano', 'Sala Orquídea', 
+(17, 'Memorial Farewell', 'Crematório Vaticano', 'Sala Orquídea', 
     CURRENT_DATE - 9 + TIME '14:00', 
     CURRENT_DATE - 7 + TIME '15:30', 
     CURRENT_DATE - 7 + TIME '16:00', 
@@ -199,7 +199,7 @@ INSERT INTO velorios (registro_obito_id, local_velorio, local_sepultamento, sala
     CURRENT_DATE + 3 + TIME '08:00', 
     NULL),
 
-(14, 'Memorial Luto Curitiba', 'Cemitério Parque Iguaçu', 'Sala Margarida', 
+(14, 'Memorial Farewell', 'Cemitério Parque Iguaçu', 'Sala Margarida', 
     CURRENT_DATE + 2 + TIME '14:00', 
     CURRENT_DATE + 3 + TIME '12:00', 
     CURRENT_DATE + 3 + TIME '13:00', 

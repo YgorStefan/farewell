@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header.jsx';
 import { SearchBar } from './components/SearchBar.jsx';
 import { SectionHeading } from './components/SectionHeading.jsx';
 import { VelorioRow } from './components/VelorioRow.jsx';
 import { LoadingGrid, ErrorState, EmptyState } from './components/Feedback.jsx';
+import { AdminPage } from './components/admin/AdminPage.jsx';
+import { LoginPage } from './components/admin/LoginPage.jsx';
 import { useDebounce } from './hooks/useDebounce.js';
 import { useVelorios } from './hooks/useVelorios.js';
 import { splitAgenda } from './utils/agenda.js';
-import { downloadBanner } from './services/api.js';
+import { downloadBanner, isAuthenticated, logoutAdmin } from './services/api.js';
 
-export default function App() {
+function useHashRoute() {
+  const [hash, setHash] = useState(window.location.hash);
+  useEffect(() => {
+    const handler = () => setHash(window.location.hash);
+    window.addEventListener('hashchange', handler);
+    return () => window.removeEventListener('hashchange', handler);
+  }, []);
+  return hash;
+}
+
+function PanelPage() {
   const [registro, setRegistro] = useState('');
   const debouncedRegistro = useDebounce(registro, 400);
 
@@ -105,10 +117,66 @@ export default function App() {
 
         <main className="content">{content}</main>
 
+        <div className="app__admin-link-wrapper">
+          <a href="#/admin" className="app__admin-link" id="link-admin">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+            Administração
+          </a>
+        </div>
+
         <footer className="app__footer">
-          <span>Luto Curitiba {new Date().getFullYear()}. Todos os direitos reservados.</span>
+          <span>Farewell {new Date().getFullYear()}. Todos os direitos reservados.</span>
         </footer>
       </div>
     </div>
   );
+}
+
+export default function App() {
+  const hash = useHashRoute();
+  const [auth, setAuth] = useState(isAuthenticated());
+
+  useEffect(() => {
+    setAuth(isAuthenticated());
+  }, [hash]);
+
+  if (hash === '#/admin') {
+    if (!auth) {
+      return (
+        <div className="app">
+          <div className="container">
+            <LoginPage
+              onLoginSuccess={() => setAuth(true)}
+              onNavigateHome={() => (window.location.hash = '')}
+            />
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="app">
+        <div className="container">
+          <AdminPage
+            onNavigateHome={() => (window.location.hash = '')}
+            onLogout={() => {
+              logoutAdmin();
+              setAuth(false);
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  return <PanelPage />;
 }
